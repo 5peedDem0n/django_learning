@@ -77,7 +77,11 @@
         <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
       </nav>
 
-      <a class="btn-getstarted" href="index.html#about">Get Started</a>
+      {% if user.is_authenticated %}
+      <a class="btn-getstarted" href="logout">Logout</a>
+      {% else %}
+      <a class="btn-getstarted" href="login">Login or Signup</a>
+      {% endif %}
 
     </div>
   </header>
@@ -91,7 +95,11 @@
       </div>
       <div class="container text-center">
         <div class="d-flex flex-column justify-content-center align-items-center">
+          {% if user.is_authenticated %}
+          <h1>Welcome, {{user.username}}</h1>
+          {% else %}
           <h1 data-aos="fade-up">Welcome to <span>QuickStart</span></h1>
+          {% endif %}
           <p data-aos="fade-up" data-aos-delay="100">Quickly start your project now and set the stage for success<br></p>
           <div class="d-flex" data-aos="fade-up" data-aos-delay="200">
             <a href="#about" class="btn-get-started">Get Started</a>
